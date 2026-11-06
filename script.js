@@ -1,3 +1,4 @@
+
 /* =====================================
    JESINTA GIFT WEBSITE
    INTERACTIVE JAVASCRIPT
@@ -8,7 +9,6 @@
    1. PENGATURAN TANGGAL ULANG TAHUN
 ===================================== */
 
-// Tanggal ulang tahun Jesinta
 const birthdayDate = new Date(Date.now() + 3000);
 
 let experienceStarted = false;
@@ -20,13 +20,11 @@ let experienceStarted = false;
 
 function startExperience() {
 
-    // Jika belum waktunya, tampilkan popup
     if (new Date() < birthdayDate) {
         showBirthdayMessage();
         return;
     }
 
-    // Cegah website dibuka berulang kali
     if (experienceStarted) return;
 
     const hero = document.querySelector(".hero");
@@ -36,10 +34,10 @@ function startExperience() {
 
     experienceStarted = true;
 
-    // Efek pembukaan
     burstHearts();
     launchConfetti();
-    startBackgroundMusic();
+
+    // MUSIK TIDAK DIMULAI OTOMATIS
 
     hero.classList.add("hero-leaving");
 
@@ -48,7 +46,6 @@ function startExperience() {
         hero.style.display = "none";
         content.classList.add("is-visible");
 
-        // Tampilkan tombol musik
         setMusicButtonVisibility(true);
 
         window.scrollTo({
@@ -82,7 +79,6 @@ function goHome() {
 
     if (content) content.classList.remove("is-visible");
 
-    // Sembunyikan tombol musik ketika kembali ke Home
     setMusicButtonVisibility(false);
 
     if (hero) {
@@ -96,6 +92,7 @@ function goHome() {
         top: 0,
         behavior: "smooth"
     });
+
 }
 
 
@@ -133,21 +130,18 @@ const gifts = [
 
     {
         title: "For Your Happiness 🌸",
-
         message:
             "Aku berharap kamu selalu punya alasan untuk tersenyum. Bahkan ketika hari-harimu tidak berjalan sesuai harapan, semoga kamu tetap menemukan kebahagiaan dalam hal-hal kecil. Jangan lupa, kamu pantas mendapatkan banyak hal baik."
     },
 
     {
         title: "For Your Dreams 🧸",
-
         message:
             "Untuk semua mimpi yang sedang kamu perjuangkan, jangan pernah menyerah, ya. Aku berharap setiap langkah kecilmu membawamu semakin dekat dengan apa yang kamu inginkan. Aku akan selalu mendoakan keberhasilanmu."
     },
 
     {
         title: "For Our Journey 🎀",
-
         message:
             "Aku berharap perjalanan kita masih punya banyak cerita indah. Semoga kita bisa terus belajar memahami satu sama lain, saling mendukung, saling menjaga, dan menciptakan kenangan yang akan selalu kita ingat."
     }
@@ -189,7 +183,6 @@ function closeGift() {
 }
 
 
-// Tutup popup dengan klik bagian luar
 const giftModal = document.getElementById("gift-modal");
 
 if (giftModal) {
@@ -205,7 +198,6 @@ if (giftModal) {
 }
 
 
-// Tutup popup dengan tombol Escape
 document.addEventListener("keydown", function(event) {
 
     if (event.key === "Escape") {
@@ -222,45 +214,72 @@ document.addEventListener("keydown", function(event) {
 const music = document.getElementById("background-music");
 
 let musicFadeFrame = null;
-let musicStarted = false;
 let isFadingOut = false;
 
 
 /* =====================================
-   PENGATURAN VISIBILITAS TOMBOL MUSIK
+   PERSIAPAN TOMBOL MUSIK
 ===================================== */
 
-function setMusicButtonVisibility(visible) {
+function prepareMusicButton() {
 
     const button = document.getElementById("music-toggle");
 
-    if (!button) return;
+    if (!button) return null;
 
-    // Pastikan tombol menjadi anak langsung BODY
-    // agar tidak terpengaruh posisi parent element
-    if (button.parentElement !== document.body) {
-        document.body.appendChild(button);
+    let icon = button.querySelector(".music-icon");
+    let label = button.querySelector(".music-label");
+
+    if (!icon || !label) {
+
+        button.innerHTML = "";
+
+        icon = document.createElement("span");
+        icon.className = "music-icon";
+        icon.textContent = "♫";
+
+        label = document.createElement("span");
+        label.className = "music-label";
+        label.textContent = "Play Music";
+
+        button.appendChild(icon);
+        button.appendChild(label);
+
     }
 
-    button.classList.toggle("show-music", visible);
-
-    // Paksa posisi di kanan bawah layar
-    Object.assign(button.style, {
-        position: "fixed",
-        top: "auto",
-        right: "15px",
-        bottom: "20px",
-        left: "auto",
-        transform: "none",
-        zIndex: "999999"
-    });
+    return button;
 
 }
 
 
-// Pastikan tombol musik tersembunyi saat pertama kali membuka website
+/* =====================================
+   VISIBILITAS TOMBOL MUSIK
+===================================== */
+
+function setMusicButtonVisibility(visible) {
+
+    const button = prepareMusicButton();
+
+    if (!button) return;
+
+    document.body.appendChild(button);
+
+    button.style.removeProperty("display");
+
+    button.classList.toggle("show-music", visible);
+
+    updateMusicButton();
+
+}
+
+
+// Tombol disembunyikan saat pertama kali membuka website
 setMusicButtonVisibility(false);
 
+
+/* =====================================
+   FADE MUSIK
+===================================== */
 
 function fadeMusic(targetVolume, duration) {
 
@@ -273,6 +292,8 @@ function fadeMusic(targetVolume, duration) {
 
     function animate(now) {
 
+        if (music.paused) return;
+
         const progress = Math.min(
             (now - startTime) / duration,
             1
@@ -283,78 +304,66 @@ function fadeMusic(targetVolume, duration) {
 
         if (progress < 1) {
             musicFadeFrame = requestAnimationFrame(animate);
+        } else {
+            musicFadeFrame = null;
         }
 
     }
 
     musicFadeFrame = requestAnimationFrame(animate);
-}
-
-
-async function startBackgroundMusic() {
-
-    if (!music || musicStarted) return;
-
-    try {
-
-        music.volume = 0;
-
-        await music.play();
-
-        musicStarted = true;
-        isFadingOut = false;
-
-        updateMusicButton();
-
-        fadeMusic(0.65, 1200);
-
-    } catch (error) {
-
-        console.log("Autoplay diblokir browser. Menunggu interaksi pengguna.");
-
-    }
 
 }
 
 
 /* =====================================
-   MUSIC PLAY / PAUSE CONTROL
+   UPDATE TULISAN TOMBOL
 ===================================== */
 
 function updateMusicButton() {
 
-    const button = document.getElementById("music-toggle");
+    const button = prepareMusicButton();
 
     if (!button || !music) return;
 
-    button.textContent = music.paused
-        ? "♫ Play Music"
-        : "Ⅱ Pause Music";
+    const label = button.querySelector(".music-label");
+
+    if (!label) return;
+
+    label.textContent = music.paused
+        ? "Play Music"
+        : "Pause Music";
+
 }
 
 
+/* =====================================
+   PLAY / PAUSE MUSIK MANUAL
+===================================== */
+
 async function toggleBackgroundMusic() {
 
-    if (!music) return;
+    if (!music) {
+        console.error("Audio background-music tidak ditemukan!");
+        return;
+    }
 
     if (music.paused) {
 
         try {
 
+            cancelAnimationFrame(musicFadeFrame);
+
+            isFadingOut = false;
+
             music.volume = 0;
 
             await music.play();
 
-            musicStarted = true;
-            isFadingOut = false;
-
-            fadeMusic(0.65, 1000);
-
-            updateMusicButton();
+            fadeMusic(0.65, 1200);
 
         } catch (error) {
 
-            console.log("Musik gagal diputar:", error);
+            console.error("Musik gagal diputar:", error);
 
             updateMusicButton();
 
@@ -368,19 +377,33 @@ async function toggleBackgroundMusic() {
 
         isFadingOut = false;
 
-        updateMusicButton();
-
     }
+
+    updateMusicButton();
 
 }
 
 
 /* =====================================
-   FADE OUT DAN LOOP MUSIK
+   SINKRONISASI STATUS AUDIO
 ===================================== */
 
-// Fade out menjelang musik selesai
 if (music) {
+
+    music.addEventListener("play", updateMusicButton);
+
+    music.addEventListener("pause", updateMusicButton);
+
+    music.addEventListener("error", () => {
+        console.error(
+            "File musik tidak dapat dimuat. Periksa lagu.mp3."
+        );
+    });
+
+
+    /* =====================================
+       FADE OUT MENJELANG AKHIR LAGU
+    ===================================== */
 
     music.addEventListener("timeupdate", () => {
 
@@ -388,7 +411,11 @@ if (music) {
 
         const remaining = music.duration - music.currentTime;
 
-        if (remaining <= 0.5 && !isFadingOut && !music.paused) {
+        if (
+            remaining <= 0.5 &&
+            !isFadingOut &&
+            !music.paused
+        ) {
 
             isFadingOut = true;
 
@@ -399,25 +426,31 @@ if (music) {
     });
 
 
-    // Putar ulang setelah musik selesai
+    /* =====================================
+       LOOP MUSIK
+    ===================================== */
+
     music.addEventListener("ended", async () => {
 
         isFadingOut = false;
+
         music.currentTime = 0;
 
         try {
 
-            await music.play();
+            music.volume = 0;
 
-            musicStarted = true;
+            await music.play();
 
             fadeMusic(0.65, 1200);
 
+            updateMusicButton();
+
         } catch (error) {
 
-            musicStarted = false;
+            updateMusicButton();
 
-            console.log("Musik gagal diputar ulang:", error);
+            console.error("Musik gagal diputar ulang:", error);
 
         }
 
@@ -493,7 +526,6 @@ function createFloatingItem() {
 }
 
 
-// Hati dan bunga jatuh berkala
 setInterval(() => {
     createFloatingItem();
 }, 1000);
@@ -550,7 +582,6 @@ function launchConfetti() {
 
     const particles = [];
 
-    // Dua sumber ledakan dari sudut bawah
     [0, 1].forEach(side => {
 
         for (let i = 0; i < 90; i++) {
@@ -675,7 +706,6 @@ const promiseGifts = [
 ];
 
 
-// MENAMPILKAN PESAN DI BAWAH TIKET
 function showSelectedGift(index) {
 
     const gift = promiseGifts[index];
@@ -703,7 +733,6 @@ function showSelectedGift(index) {
 }
 
 
-// MEMILIH HADIAH
 function selectPromise(index) {
 
     const savedChoice = localStorage.getItem("jesintaGiftChoice");
@@ -730,13 +759,10 @@ function selectPromise(index) {
         result.classList.add("show");
     }
 
-    // Tampilkan pesan sesuai hadiah di bawah tiket
     showSelectedGift(index);
 
-    // Kunci semua pilihan
     lockGiftChoices(index);
 
-    // WhatsApp tetap seperti fungsi sebelumnya
     const whatsappMessage =
         `Hai, aku sudah memilih hadiah ulang tahunku! ♡\n\n${gift.whatsapp}\n\nAku akan menunggu hadiah ini sampai hari kita bertemu.`;
 
@@ -757,7 +783,6 @@ function selectPromise(index) {
 }
 
 
-// MENGUNCI PILIHAN HADIAH
 function lockGiftChoices(selectedIndex) {
 
     const cards = document.querySelectorAll(".promise-card");
@@ -792,7 +817,6 @@ function lockGiftChoices(selectedIndex) {
 }
 
 
-// MEMULIHKAN PILIHAN SETELAH REFRESH
 function restoreGiftChoice() {
 
     const savedChoice = localStorage.getItem("jesintaGiftChoice");
@@ -818,10 +842,8 @@ function restoreGiftChoice() {
         result.classList.add("show");
     }
 
-    // Pulihkan pesan khusus di bawah tiket
     showSelectedGift(index);
 
-    // Pulihkan kunci pilihan
     lockGiftChoices(index);
 
 }
@@ -881,13 +903,9 @@ function updateBirthdayCountdown() {
     if (!countdown) return;
 
     const now = new Date().getTime();
-
     const target = birthdayDate.getTime();
-
     const distance = target - now;
 
-
-    // Jika ulang tahun sudah tiba
     if (distance <= 0) {
 
         countdown.style.display = "none";
@@ -899,7 +917,6 @@ function updateBirthdayCountdown() {
         return;
 
     }
-
 
     const days = Math.floor(
         distance / (1000 * 60 * 60 * 24)
@@ -917,12 +934,10 @@ function updateBirthdayCountdown() {
         (distance % (1000 * 60)) / 1000
     );
 
-
     const daysElement = document.getElementById("countdown-days");
     const hoursElement = document.getElementById("countdown-hours");
     const minutesElement = document.getElementById("countdown-minutes");
     const secondsElement = document.getElementById("countdown-seconds");
-
 
     if (daysElement) {
         daysElement.textContent = String(days).padStart(2, "0");
@@ -943,7 +958,6 @@ function updateBirthdayCountdown() {
 }
 
 
-// Jalankan countdown
 updateBirthdayCountdown();
 
 setInterval(updateBirthdayCountdown, 1000);
@@ -955,7 +969,6 @@ setInterval(updateBirthdayCountdown, 1000);
 
 function showBirthdayMessage() {
 
-    // Cegah popup bertumpuk
     if (document.getElementById("birthday-popup")) return;
 
     const overlay = document.createElement("div");
@@ -993,41 +1006,26 @@ function showBirthdayMessage() {
 
     `;
 
-
     Object.assign(overlay.style, {
 
         position: "fixed",
-
         inset: "0",
-
         background: "rgba(55, 30, 45, 0.48)",
-
         backdropFilter: "blur(6px)",
-
         display: "flex",
-
         justifyContent: "center",
-
         alignItems: "center",
-
         padding: "20px",
-
         zIndex: "99999",
-
         animation: "popupFade 0.3s ease"
 
     });
 
-
     document.body.appendChild(overlay);
 
-
     document.getElementById("close-birthday-popup").onclick = () => {
-
         overlay.remove();
-
     };
-
 
     overlay.addEventListener("click", (event) => {
 

@@ -1973,73 +1973,91 @@ footer span {
     color: white;
 }
 
+
 /* =====================================
-   MUSIC BUTTON - FIXED POSITION
+   MUSIC PLAYER BUTTON
 ===================================== */
 
 #music-toggle {
-    display: none !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+
     position: fixed !important;
     top: auto !important;
-    right: 20px !important;
+    right: 18px !important;
     bottom: 20px !important;
     left: auto !important;
+
+    display: none;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 9px !important;
+
+    width: auto !important;
+    min-width: 145px !important;
+    height: 46px !important;
+    padding: 0 19px !important;
+
+    border: 1px solid #f4d7e2 !important;
+    border-radius: 50px !important;
+
+    background: linear-gradient(135deg, #e9a5bc, #c87998) !important;
+
+    color: #ffffff !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+    white-space: nowrap !important;
+
+    box-shadow: 0 5px 18px rgba(200, 121, 152, 0.3);
+
+    cursor: pointer;
     z-index: 999999 !important;
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
 }
 
 #music-toggle.show-music {
-    display: block !important;
+    display: flex !important;
+}
+
+#music-toggle .music-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    line-height: 1;
+}
+
+#music-toggle .music-label {
+    display: inline-block;
+    font-size: 13px;
+    line-height: 1;
 }
 
 #music-toggle:hover {
-    background: #e9a5bc;
-    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(200, 121, 152, 0.4);
 }
 
-/* =====================================
-   MUSIC BUTTON - MOBILE POSITION
-   TEPAT DI BAWAH NAVIGASI
-===================================== */
+#music-toggle:active {
+    transform: scale(0.96);
+}
 
 @media (max-width: 600px) {
     #music-toggle {
-        top: auto !important;
-        right: 12px !important;
-        bottom: 20px !important;
-        left: auto !important;
+        right: 14px !important;
+        bottom: 16px !important;
+        min-width: 135px !important;
+        height: 43px !important;
+        padding: 0 16px !important;
+        font-size: 12px !important;
     }
-}
 
-/* POSISI TOMBOL MUSIK - KANAN BAWAH LAYAR */
-#music-toggle,
-#music-toggle.show-music {
-    position: fixed !important;
-    top: auto !important;
-    right: 20px !important;
-    bottom: 20px !important;
-    left: auto !important;
-    transform: none !important;
-    z-index: 999999 !important;
-}
-
-@media (max-width: 600px) {
-    #music-toggle,
-    #music-toggle.show-music {
-        position: fixed !important;
-        top: auto !important;
-        right: 15px !important;
-        bottom: 20px !important;
-        left: auto !important;
-        transform: none !important;
+    #music-toggle .music-label {
+        font-size: 12px;
     }
-}
-
-#music-toggle {
-    position: fixed !important;
-    top: auto !important;
-    right: 15px !important;
-    bottom: 20px !important;
-    left: auto !important;
-    transform: none !important;
-    z-index: 999999 !important;
 }
