@@ -10,7 +10,7 @@
 ===================================== */
 
 // Tanggal ulang tahun Jesinta
-const birthdayDate = new Date("2027-01-16T00:00:00+07:00");
+const birthdayDate = new Date(Date.now() + 3000);
 
 let experienceStarted = false;
 
@@ -666,7 +666,11 @@ function lockGiftChoices(selectedIndex) {
 
     buttons.forEach((button, index) => {
 
-        button.disabled = true;
+    if (!button.dataset.originalText) {
+        button.dataset.originalText = button.textContent;
+    }
+
+    button.disabled = true;
 
         if (index === selectedIndex) {
             button.textContent = "Your Choice ♡";
@@ -713,8 +717,43 @@ function restoreGiftChoice() {
 
 
 document.addEventListener("DOMContentLoaded", restoreGiftChoice);
+/* =====================================
+   RESET GIFT CHOICE
+===================================== */
 
+function resetGiftChoice() {
 
+    localStorage.removeItem("jesintaGiftChoice");
+
+    const result = document.getElementById("gift-selection-result");
+    const message = document.getElementById("selected-gift-message");
+    const note = document.getElementById("selected-gift-note");
+
+    if (result) result.classList.remove("show");
+    if (message) message.textContent = "";
+
+    if (note) {
+        note.style.display = "none";
+        note.classList.remove("show");
+    }
+
+    const cards = document.querySelectorAll(".promise-card");
+    const buttons = document.querySelectorAll(".promise-button");
+
+    cards.forEach(card => {
+        card.classList.remove("selected", "locked");
+    });
+
+    buttons.forEach(button => {
+        button.disabled = false;
+        button.textContent = button.dataset.originalText || "Choose This Gift";
+    });
+
+    document.getElementById("choose-gift")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
 /* =====================================
    13. BIRTHDAY COUNTDOWN
 ===================================== */
