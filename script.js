@@ -236,8 +236,25 @@ function setMusicButtonVisibility(visible) {
 
     if (!button) return;
 
-    // Visibilitas dikendalikan melalui class CSS
+    // Pastikan tombol menjadi anak langsung BODY
+    // agar tidak terpengaruh posisi parent element
+    if (button.parentElement !== document.body) {
+        document.body.appendChild(button);
+    }
+
     button.classList.toggle("show-music", visible);
+
+    // Paksa posisi di kanan bawah layar
+    Object.assign(button.style, {
+        position: "fixed",
+        top: "auto",
+        right: "15px",
+        bottom: "20px",
+        left: "auto",
+        transform: "none",
+        zIndex: "999999"
+    });
+
 }
 
 

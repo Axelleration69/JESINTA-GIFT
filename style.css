@@ -2033,3 +2033,13 @@ footer span {
         transform: none !important;
     }
 }
+
+#music-toggle {
+    position: fixed !important;
+    top: auto !important;
+    right: 15px !important;
+    bottom: 20px !important;
+    left: auto !important;
+    transform: none !important;
+    z-index: 999999 !important;
+}
