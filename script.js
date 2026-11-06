@@ -261,6 +261,7 @@ async function startBackgroundMusic() {
 
         musicStarted = true;
         isFadingOut = false;
+updateMusicButton();
 
         fadeMusic(0.65, 1200);
 
@@ -272,6 +273,61 @@ async function startBackgroundMusic() {
 
 }
 
+/* =====================================
+   MUSIC PLAY / PAUSE CONTROL
+===================================== */
+
+function updateMusicButton() {
+    const button = document.getElementById("music-toggle");
+
+    if (!button || !music) return;
+
+    button.textContent = music.paused
+        ? "♫ Play Music"
+        : "Ⅱ Pause Music";
+}
+
+
+async function toggleBackgroundMusic() {
+
+    if (!music) return;
+
+    if (music.paused) {
+
+        try {
+
+            music.volume = 0;
+
+            await music.play();
+
+            musicStarted = true;
+            isFadingOut = false;
+
+            fadeMusic(0.65, 1000);
+
+            updateMusicButton();
+
+        } catch (error) {
+
+            console.log("Musik gagal diputar:", error);
+
+            updateMusicButton();
+
+        }
+
+    } else {
+
+        cancelAnimationFrame(musicFadeFrame);
+
+        music.pause();
+
+        isFadingOut = false;
+
+        updateMusicButton();
+
+    }
+
+}
 
 // Jika autoplay ditolak Chrome,
 // coba putar musik saat Jesinta berinteraksi dengan halaman.
@@ -554,21 +610,21 @@ const promiseGifts = [
         name: "A Bouquet of Love",
         whatsapp: "Aku memilih hadiah A Bouquet of Love ♡",
         title: "A Bouquet of Love 🌸",
-        image: "assets/hadiah1.jpg",
+        image: "hadiah1.jpg",
         note: "If I could give you a flower for every time you make me smile, I would give you an endless garden. Until then, let this bouquet remind you how special you are to me."
     },
     {
         name: "A Little Hug",
         whatsapp: "Aku memilih hadiah A Little Hug ♡",
         title: "A Little Hug 🧸",
-        image: "assets/hadiah2.jpg",
+        image: "hadiah2.jpg",
         note: "Whenever you need a hug and I'm not around, I hope this little friend can remind you that someone is always thinking of you."
     },
     {
         name: "A Promise to Keep",
         whatsapp: "Aku memilih hadiah A Promise to Keep ♡",
         title: "A Promise to Keep ♡",
-        image: "assets/hadiah3.jpg",
+        image: "hadiah3.jpg",
         note: "Not a promise of perfection, but a promise to keep choosing you, to grow with you, and to make more beautiful memories together."
     }
 ];
