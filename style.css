@@ -1,0 +1,2007 @@
+
+/* =====================================
+   JESINTA GIFT WEBSITE
+   ROMANTIC PASTEL DESIGN
+===================================== */
+
+:root {
+    --pink: #e9a5bc;
+    --pink-dark: #c87998;
+    --pink-light: #fff0f5;
+    --cream: #fffaf7;
+    --purple-light: #f3edf8;
+    --text: #765866;
+    --text-light: #a88b98;
+    --white: #ffffff;
+    --shadow: 0 15px 45px rgba(183, 112, 142, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--pink-dark);
+    outline-offset: 4px;
+}
+
+/* =====================================
+   FLOATING BACKGROUND
+===================================== */
+
+#floating-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 20;
+}
+
+.floating-item {
+    position: absolute;
+    top: -40px;
+    animation: falling linear forwards;
+    opacity: 0.75;
+}
+
+@keyframes falling {
+    to {
+        transform: translateY(110vh) rotate(400deg);
+        opacity: 0;
+    }
+}
+
+/* =====================================
+   DASHBOARD / HERO
+===================================== */
+
+.hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    background:
+        radial-gradient(circle at 15% 20%, #f9dce7 0, transparent 30%),
+        radial-gradient(circle at 85% 80%, #eee1f5 0, transparent 32%),
+        linear-gradient(135deg, #fff7f8, #fffaf5);
+}
+
+.hero-content {
+    width: min(720px, 100%);
+    padding: 60px 30px;
+    border: 1px solid rgba(233, 165, 188, 0.4);
+    border-radius: 35px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow);
+    animation: fadeUp 1s ease both;
+}
+
+.eyebrow {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--pink-dark);
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+.hero-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 12px;
+}
+
+.hero-cake {
+    font-size: 42px;
+    margin: 0;
+    animation: cakeFloat 3s ease-in-out infinite;
+}
+
+.hero-flower {
+    font-size: 62px;
+    margin: 0;
+    animation: flowerFloat 4s ease-in-out infinite;
+}
+
+@keyframes cakeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes flowerFloat {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-8px) rotate(5deg); }
+}
+
+.hero h1 {
+    font-family: 'Kalam', cursive;
+    font-weight: 700;
+    font-size: clamp(42px, 8vw, 75px);
+    line-height: 1.15;
+    color: #8c6375;
+}
+
+.jesinta-name {
+    font-family: 'Kalam', cursive;
+    font-weight: 700;
+}
+
+.hero h1 span {
+    display: block;
+    font-style: italic;
+    color: var(--pink-dark);
+}
+
+.hero-description {
+    max-width: 430px;
+    margin: 25px auto 30px;
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.hero-bottom {
+    margin-top: 45px;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #c4a5b2;
+}
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.primary-btn,
+.secondary-btn {
+    border: none;
+    border-radius: 50px;
+    padding: 14px 27px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.primary-btn {
+    color: white;
+    background: linear-gradient(120deg, #e9a5bc, #cc7f9d);
+    box-shadow: 0 8px 22px rgba(204, 127, 157, 0.25);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(204, 127, 157, 0.35);
+}
+
+.secondary-btn {
+    color: var(--pink-dark);
+    background: white;
+    border: 1px solid #f0d3df;
+}
+
+.secondary-btn:hover {
+    background: var(--pink-light);
+}
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    padding: 19px 15px;
+    background: rgba(255, 250, 247, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #f2e2e8;
+}
+
+.navbar a {
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    color: #977a87;
+    transition: 0.2s;
+}
+
+.navbar a:hover {
+    color: var(--pink-dark);
+}
+
+/* =====================================
+   GENERAL SECTIONS
+===================================== */
+
+.section {
+    padding: 100px 6%;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 50px;
+}
+
+.section-heading h2,
+.surprise-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 45px);
+    font-weight: 400;
+    color: #916b7d;
+    margin: 12px 0;
+}
+
+.section-heading p {
+    color: var(--text-light);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* =====================================
+   LOVE LETTER
+===================================== */
+
+.letter-card {
+    max-width: 720px;
+    margin: auto;
+    padding: 40px;
+    background: #FFFCFA;
+    border: 2px solid #f1dce5;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.envelope-icon {
+    font-size: 65px;
+    margin-bottom: 15px;
+}
+
+.envelope h3 {
+    font-family: 'Kalam', cursive;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.envelope p {
+    font-size: 13px;
+    color: var(--text-light);
+    margin: 10px 0 30px;
+}
+
+.letter-content {
+    display: none;
+    max-width: 540px;
+    margin: auto;
+    text-align: left;
+    animation: fadeUp 0.6s ease;
+}
+
+.letter-content h3 {
+    font-family: 'Kalam', cursive;
+    font-size: 27px;
+    font-weight: 500;
+    color: var(--pink-dark);
+    margin-bottom: 20px;
+}
+
+.letter-decoration {
+    text-align: center;
+    font-size: 30px;
+    color: var(--pink);
+    margin-bottom: 18px;
+}
+
+.letter-date {
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: var(--pink-dark);
+    margin-bottom: 28px;
+}
+
+.letter-content p {
+    font-family: 'Kalam', cursive;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    color: #695963;
+}
+
+.letter-content p:first-of-type {
+    color: var(--pink-dark);
+    font-weight: 600;
+}
+
+.letter-content .letter-highlight {
+    font-family: 'Kalam', cursive;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.7;
+    text-align: center;
+    color: var(--pink-dark);
+    padding: 18px 15px;
+    margin: 28px 0;
+}
+
+.letter-signature {
+    font-family: 'Kalam', cursive;
+    font-size: 14px;
+    line-height: 1.9;
+    margin: 35px 0;
+    color: var(--text-light);
+}
+
+.letter-signature strong {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--pink-dark);
+}
+
+.letter-content .secondary-btn {
+    display: block;
+    margin: 25px auto 0;
+}
+
+/* =====================================
+   VIRTUAL GIFT CARDS
+===================================== */
+
+.gifts-section {
+    background: linear-gradient(135deg, #fff4f7, #fbf5fc);
+}
+
+.gift-grid {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.gift-card {
+    padding: 35px 22px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #f0dce5;
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(183, 112, 142, 0.08);
+    transition: 0.3s;
+}
+
+.gift-card:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--shadow);
+}
+
+.gift-icon {
+    font-size: 43px;
+    margin-bottom: 18px;
+}
+
+.gift-number {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #c19bab;
+}
+
+.gift-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 400;
+    color: var(--pink-dark);
+    margin: 12px 0;
+}
+
+.gift-card p {
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 22px;
+}
+
+.gift-card button {
+    padding: 11px 20px;
+    border: 1px solid #eccbd9;
+    border-radius: 30px;
+    color: var(--pink-dark);
+    background: white;
+    font-size: 11px;
+    transition: 0.3s;
+}
+
+.gift-card button:hover {
+    background: var(--pink-light);
+}
+
+/* =====================================
+   MEMORY GALLERY
+   VIDEO + 3 FOTO VERTIKAL + 2 HORIZONTAL
+===================================== */
+
+.gallery-subtitle {
+    color: #a77b8e;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.featured-video {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto 30px;
+    overflow: hidden;
+    border-radius: 22px;
+    background: #f5e3eb;
+    box-shadow: 0 10px 30px rgba(180, 110, 140, 0.15);
+}
+
+.featured-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    width: 100%;
+    max-width: 850px;
+    margin: 25px auto 0;
+    gap: 12px;
+}
+
+.memory-item.vertical {
+    grid-column: span 2;
+    aspect-ratio: 2 / 3;
+}
+
+.memory-item.horizontal {
+    grid-column: span 3;
+    aspect-ratio: 3 / 2;
+}
+
+.memory-item {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #f5e3eb;
+    box-shadow: 0 8px 25px rgba(180, 110, 140, 0.12);
+}
+
+.memory-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.memory-item:hover img {
+    transform: scale(1.04);
+}
+
+/* =====================================
+   FINAL SURPRISE
+===================================== */
+
+.surprise-section {
+    padding-top: 50px;
+    background: linear-gradient(145deg, #fff8fa, #f8f0fa);
+}
+
+.surprise-card {
+    max-width: 720px;
+    margin: auto;
+    padding: 55px 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #f0dce5;
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+}
+
+.surprise-icon {
+    font-size: 55px;
+    margin: 22px 0;
+}
+
+.surprise-card > p {
+    max-width: 430px;
+    margin: 0 auto 25px;
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--text-light);
+}
+
+.final-message {
+    display: none;
+    max-width: 480px;
+    margin: 35px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid #f0dce5;
+    animation: fadeUp 0.8s ease;
+}
+
+.final-hearts {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.final-message h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--pink-dark);
+    font-size: 23px;
+    font-weight: 400;
+    margin: 18px 0;
+}
+
+.final-message p {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    line-height: 2;
+    margin: 12px 0;
+}
+
+.final-signature {
+    margin-top: 25px;
+    font-style: italic;
+    color: var(--pink-dark);
+}
+
+/* =====================================
+   MUSIC PLAYER
+===================================== */
+
+.music-player {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 15px;
+    border: 1px solid #f0d3df;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 5px 20px rgba(183, 112, 142, 0.15);
+}
+
+.music-player button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    background: var(--pink-dark);
+    font-size: 15px;
+}
+
+.music-player span {
+    font-size: 10px;
+    color: var(--text);
+}
+
+/* =====================================
+   GIFT MODAL
+===================================== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(74, 45, 60, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+.modal.show {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    position: relative;
+    width: min(430px, 100%);
+    padding: 45px 30px;
+    text-align: center;
+    background: white;
+    border: 1px solid #f2dce5;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(70, 35, 50, 0.15);
+    animation: popUp 0.35s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 17px;
+    border: none;
+    background: none;
+    color: #b68a9d;
+    font-size: 27px;
+}
+
+.modal-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.modal-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--pink-dark);
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer {
+    padding: 35px 15px;
+    text-align: center;
+    background: #fff9fa;
+    border-top: 1px solid #f2e2e8;
+}
+
+footer p {
+    color: var(--pink-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+footer span {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #b89aa7;
+}
+
+.creator-name {
+    color: #D94F83;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+/* =====================================
+   CHOOSE YOUR GIFT
+===================================== */
+
+.choose-gift-section {
+    text-align: center;
+    padding: 80px 20px 100px;
+    background: linear-gradient(145deg, #fff8fa, #f8f0fa);
+}
+
+.choose-gift-section .section-heading {
+    max-width: 580px;
+    margin: 0 auto 45px;
+}
+
+.promise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.promise-card {
+    background: #fff;
+    border: 1px solid #f1dce5;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(130, 75, 100, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.promise-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 14px 32px rgba(130, 75, 100, 0.14);
+}
+
+.promise-image {
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+    background: #f9edf2;
+}
+
+.promise-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.promise-card:hover .promise-image img {
+    transform: scale(1.05);
+}
+
+.promise-info {
+    padding: 25px 22px 28px;
+    text-align: center;
+}
+
+.promise-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    color: #70475b;
+    margin-bottom: 10px;
+}
+
+.promise-info p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #8b7580;
+    margin-bottom: 22px;
+}
+
+.promise-button {
+    border: 1px solid #d99ab4;
+    background: #f8e8ef;
+    color: #80536a;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.promise-button:hover:not(:disabled) {
+    background: #d99ab4;
+    color: white;
+    box-shadow: 0 5px 15px rgba(180, 110, 145, 0.2);
+}
+
+/* STATUS PILIHAN HADIAH */
+
+.promise-card.selected {
+    border: 2px solid #d99ab4;
+    box-shadow: 0 8px 25px rgba(180, 110, 145, 0.16);
+}
+
+.promise-card.locked {
+    opacity: 0.55;
+    filter: grayscale(25%);
+}
+
+.promise-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.85;
+    background: #f7e9ef;
+    color: #956b7f;
+}
+
+/* HASIL PILIHAN */
+
+.gift-selection-result {
+    display: none;
+    max-width: 600px;
+    margin: 55px auto 0;
+    padding: 35px 25px;
+    background: #fff;
+    border: 1px solid #f1dce5;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(130, 75, 100, 0.08);
+    text-align: center;
+}
+
+.gift-selection-result.show {
+    display: block;
+    animation: giftReveal 0.6s ease;
+}
+
+.gift-selection-result .promise-icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.gift-selection-result h3 {
+    font-family: 'Playfair Display', serif;
+    color: #70475b;
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.gift-selection-result > p {
+    color: #8b7580;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* =====================================
+   FIRST MEET - REAL TICKET DESIGN
+===================================== */
+
+.first-meet-ticket {
+    display: flex;
+    position: relative;
+    max-width: 680px;
+    min-height: 270px;
+    margin: 40px auto 15px;
+    padding: 0;
+
+    background: #fffaf3;
+    border: 1px solid #d9b8a6;
+    border-radius: 12px;
+    overflow: hidden;
+
+    box-shadow: 0 15px 35px rgba(120, 75, 75, 0.13);
+    text-align: left;
+    color: #805b55;
+}
+
+/* BAGIAN UTAMA TIKET */
+
+.ticket-main {
+    flex: 1;
+    padding: 30px 35px;
+    position: relative;
+}
+
+.ticket-label {
+    display: block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #b17c78;
+    margin-bottom: 14px;
+}
+
+.ticket-main h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 39px;
+    line-height: 1;
+    letter-spacing: 2px;
+    color: #9e6268;
+    margin: 0;
+}
+
+.ticket-main h3 {
+    font-size: 11px;
+    letter-spacing: 4px;
+    font-weight: 500;
+    color: #b58a7c;
+    margin: 9px 0 18px;
+}
+
+.ticket-divider {
+    width: 100%;
+    border-top: 1px solid #ead8cc;
+    margin-bottom: 17px;
+}
+
+.ticket-details {
+    display: flex;
+    gap: 55px;
+}
+
+.ticket-details div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ticket-details span,
+.ticket-date span {
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #b58a7c;
+}
+
+.ticket-details strong {
+    font-family: "Playfair Display", serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: #805b55;
+}
+
+.ticket-quote {
+    font-family: "Playfair Display", serif;
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.6;
+    color: #a47e78;
+    margin: 18px 0 12px;
+}
+
+.ticket-date {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+}
+
+.ticket-date strong {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #9e6268;
+}
+
+/* BAGIAN SOBEKAN TIKET */
+
+.ticket-stub {
+    width: 155px;
+    flex-shrink: 0;
+    padding: 28px 15px;
+
+    background: #f5e4df;
+    border-left: 2px dashed #d4aaa0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.stub-label {
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #ad7b75;
+}
+
+.stub-heart {
+    font-family: Georgia, serif;
+    font-size: 53px;
+    line-height: 1.4;
+    color: #b97980;
+}
+
+.ticket-stub strong {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #98646a;
+}
+
+.stub-line {
+    width: 70%;
+    border-top: 1px solid #d7b7ae;
+    margin: 17px 0;
+}
+
+.stub-redeem {
+    font-size: 8px;
+    line-height: 1.8;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #98646a;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 520px) {
+    .first-meet-ticket {
+        min-height: 0;
+    }
+
+    .ticket-main {
+        padding: 25px 18px;
+    }
+
+    .ticket-main h2 {
+        font-size: 27px;
+    }
+
+    .ticket-main h3 {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .ticket-details {
+        gap: 20px;
+    }
+
+    .ticket-details strong {
+        font-size: 12px;
+    }
+
+    .ticket-quote {
+        font-size: 11px;
+    }
+
+    .ticket-date {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .ticket-date strong {
+        font-size: 8px;
+    }
+
+    .ticket-stub {
+        width: 105px;
+        padding: 20px 8px;
+    }
+
+    .stub-label,
+    .stub-redeem {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .stub-heart {
+        font-size: 40px;
+    }
+}
+
+/* =====================================
+   BIRTHDAY COUNTDOWN
+===================================== */
+
+.birthday-countdown {
+    max-width: 430px;
+    margin: 28px auto;
+    text-align: center;
+}
+
+.birthday-countdown > p {
+    color: #b47b96;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.countdown-grid > div {
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid #f1dce5;
+    border-radius: 15px;
+    padding: 14px 5px;
+    box-shadow: 0 5px 15px rgba(130, 75, 100, 0.06);
+}
+
+.countdown-grid span {
+    display: block;
+    color: #80536a;
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.countdown-grid small {
+    display: block;
+    color: #b47b96;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    margin-top: 5px;
+}
+
+/* =====================================
+   BIRTHDAY LOCK POPUP
+===================================== */
+
+.birthday-popup-card {
+    position: relative;
+    width: 100%;
+    max-width: 370px;
+    padding: 38px 28px 28px;
+    background: #fff9fb;
+    border: 1px solid #f3d5e1;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(60, 25, 45, 0.2);
+    animation: popupBounce 0.45s ease;
+    overflow: hidden;
+}
+
+.popup-decoration {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 27px;
+    transform: rotate(15deg);
+}
+
+.popup-icon {
+    font-size: 55px;
+    margin-bottom: 12px;
+}
+
+.popup-label {
+    color: #c58ba5;
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.birthday-popup-card h2 {
+    font-family: 'Playfair Display', serif;
+    color: #80536a;
+    font-size: 29px;
+    margin: 12px 0;
+}
+
+.birthday-popup-card > p {
+    color: #947b87;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.popup-note {
+    background: #fcecf3;
+    color: #a46e87;
+    padding: 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+#close-birthday-popup {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 30px;
+    background: #d99ab4;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#close-birthday-popup:hover {
+    background: #bd7d99;
+    transform: translateY(-2px);
+}
+
+.popup-hearts {
+    color: #d99ab4;
+    font-size: 17px;
+    margin-top: 20px;
+    letter-spacing: 4px;
+}
+
+/* =====================================
+   ANIMATIONS
+===================================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popUp {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes giftReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popupBounce {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* =====================================
+   TRANSISI MASUK KE WEBSITE
+===================================== */
+
+.site-content {
+    display: none;
+    opacity: 0;
+}
+
+.site-content.is-visible {
+    display: block;
+    animation: contentEnter 1s ease forwards;
+}
+
+.hero.hero-leaving {
+    animation: dashboardExit 0.85s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes dashboardExit {
+    to {
+        opacity: 0;
+        transform: scale(1.08);
+        filter: blur(10px);
+    }
+}
+
+@keyframes contentEnter {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================================
+   RESPONSIVE - TABLET
+===================================== */
+
+@media (max-width: 800px) {
+    .gift-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .navbar {
+        gap: 20px;
+    }
+
+    .section {
+        padding: 80px 5%;
+    }
+
+    .featured-video,
+    .memory-grid {
+        max-width: 100%;
+    }
+}
+
+/* =====================================
+   RESPONSIVE - MOBILE
+===================================== */
+
+@media (max-width: 550px) {
+    .hero-content {
+        padding: 45px 20px;
+        border-radius: 25px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+    }
+
+    .hero-bottom {
+        font-size: 8px;
+    }
+
+    .hero-cake,
+    .hero-flower {
+        font-size: 35px;
+    }
+
+    .hero-decoration {
+        gap: 15px;
+    }
+
+    .navbar {
+        gap: 15px;
+        padding: 15px 8px;
+    }
+
+    .navbar a {
+        font-size: 9px;
+    }
+
+    .section {
+        padding: 70px 5%;
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+        font-size: 34px;
+    }
+
+    .gift-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .gift-card {
+        padding: 28px 18px;
+    }
+
+    .memory-grid {
+        gap: 8px;
+    }
+
+    .memory-item {
+        border-radius: 10px;
+    }
+
+    .letter-card {
+        padding: 28px 20px;
+    }
+
+    .letter-content p {
+        font-size: 14px;
+    }
+
+    .surprise-card {
+        padding: 40px 20px;
+    }
+
+    .music-player {
+        right: 10px;
+        bottom: 10px;
+    }
+}
+
+/* =====================================
+   RESPONSIVE - CHOOSE YOUR GIFT
+===================================== */
+
+@media (max-width: 768px) {
+    .promise-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .promise-image {
+        height: 190px;
+    }
+}
+
+@media (max-width: 520px) {
+    .promise-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+    }
+
+    .promise-image {
+        height: 230px;
+    }
+
+    .promise-info {
+        padding: 22px 18px 25px;
+    }
+
+    .gift-selection-result {
+        padding: 28px 18px;
+    }
+
+    .first-meet-ticket h2 {
+        font-size: 24px;
+    }
+}
+
+/* =====================================
+   RESPONSIVE - COUNTDOWN
+===================================== */
+
+@media (max-width: 480px) {
+    .birthday-countdown {
+        max-width: 340px;
+    }
+
+    .countdown-grid {
+        gap: 7px;
+    }
+
+    .countdown-grid > div {
+        padding: 12px 3px;
+    }
+
+    .countdown-grid span {
+        font-size: 23px;
+    }
+}
+
+/* =====================================
+   FIRST MEET TICKET - REDESIGN
+===================================== */
+
+.first-meet-ticket {
+    position: relative;
+    max-width: 620px;
+    margin: 35px auto 10px;
+    padding: 35px 30px;
+    text-align: center;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 10% 15%, rgba(255,255,255,.9), transparent 25%),
+        linear-gradient(135deg, #fff9f5, #ffe5e8 55%, #fff1e5);
+
+    border: 1px solid #e9c4bb;
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 35px rgba(177, 105, 112, .13),
+        inset 0 0 0 6px rgba(255,255,255,.45);
+}
+
+/* Garis dekorasi bagian dalam */
+.first-meet-ticket::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px dashed #d9a9a2;
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+/* Ornamen lingkaran */
+.first-meet-ticket::after {
+    content: "♡";
+    position: absolute;
+    right: 25px;
+    top: 12px;
+    font-size: 35px;
+    color: rgba(190, 120, 125, .22);
+    transform: rotate(15deg);
+}
+
+.first-meet-ticket span {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 12px;
+    padding: 7px 17px;
+
+    background: #f4d7d4;
+    color: #98636a;
+
+    border-radius: 30px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.first-meet-ticket h2 {
+    position: relative;
+    z-index: 1;
+    margin: 8px 0 12px;
+
+    color: #9e606b;
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.first-meet-ticket p {
+    position: relative;
+    z-index: 1;
+    max-width: 380px;
+    margin: 0 auto;
+
+    color: #98777a;
+    font-size: 13px;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+/* Nomor dan keterangan tiket */
+.first-meet-ticket p::after {
+    content: "✦  ADMIT ONE  ✦";
+    display: block;
+    margin-top: 22px;
+
+    color: #b98570;
+    font-size: 10px;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 3px;
+}
+
+@media (max-width: 480px) {
+    .first-meet-ticket {
+        padding: 30px 20px;
+    }
+
+    .first-meet-ticket h2 {
+        font-size: 25px;
+    }
+
+    .first-meet-ticket span {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+}
+
+/* =====================================
+   FIRST MEET TICKET - FINAL OVERRIDE
+===================================== */
+
+.first-meet-ticket {
+    display: flex !important;
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    min-height: 0 !important;
+    margin: 35px auto 15px !important;
+    padding: 0 !important;
+    overflow: hidden;
+
+    background: #fffaf3 !important;
+    border: 1px solid #d8b9a7 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 12px 30px rgba(100, 65, 55, .12) !important;
+
+    text-align: left;
+}
+
+/* MATIKAN ORNAMEN DESAIN LAMA */
+.first-meet-ticket::before,
+.first-meet-ticket::after {
+    display: none !important;
+    content: none !important;
+}
+
+.first-meet-ticket p::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* BAGIAN UTAMA */
+.ticket-main {
+    flex: 1;
+    min-width: 0;
+    padding: 30px 32px;
+    background: #fffaf3;
+}
+
+.ticket-label {
+    display: block;
+    margin-bottom: 15px;
+    padding: 0 !important;
+    background: none !important;
+    border-radius: 0 !important;
+
+    color: #a77b70 !important;
+    font-size: 9px !important;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.ticket-main h2 {
+    margin: 0;
+    color: #895b60;
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+    line-height: 1.1;
+    letter-spacing: 2px;
+}
+
+.ticket-main h3 {
+    margin: 7px 0 18px;
+    color: #b28b7c;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 4px;
+}
+
+.ticket-divider {
+    margin-bottom: 17px;
+    border-top: 1px solid #e8d8ca;
+}
+
+.ticket-details {
+    display: flex;
+    gap: 55px;
+}
+
+.ticket-details div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ticket-details span,
+.ticket-date span {
+    color: #b28b7c;
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+.ticket-details strong {
+    color: #805b55;
+    font-family: "Playfair Display", serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.ticket-quote {
+    margin: 17px 0 14px !important;
+    color: #a47e78 !important;
+    font-family: "Playfair Display", serif;
+    font-size: 12px !important;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.ticket-date {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 !important;
+}
+
+.ticket-date strong {
+    color: #98646a;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+/* BAGIAN SOBEKAN */
+.ticket-stub {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 155px;
+    width: 155px !important;
+    padding: 25px 12px !important;
+
+    background: #f5e9df !important;
+    border-left: 2px dashed #c99d8e;
+
+    text-align: center;
+}
+
+.stub-label,
+.stub-redeem {
+    color: #a77b70;
+    font-size: 8px !important;
+    letter-spacing: 1.5px;
+}
+
+.stub-heart {
+    margin: 10px 0;
+    color: #b97980;
+    font-family: Georgia, serif;
+    font-size: 43px !important;
+}
+
+.ticket-stub strong {
+    color: #98646a;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.stub-line {
+    width: 65%;
+    margin: 15px 0;
+    border-top: 1px solid #d7b7ae;
+}
+
+.stub-redeem {
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+/* DETAIL BARCODE DEKORATIF */
+.ticket-stub::after {
+    content: "";
+    display: block;
+    width: 75px;
+    height: 25px;
+    margin-top: 18px;
+    background: repeating-linear-gradient(
+        90deg,
+        #98746a 0px,
+        #98746a 2px,
+        transparent 2px,
+        transparent 4px,
+        #98746a 4px,
+        #98746a 5px,
+        transparent 5px,
+        transparent 8px
+    );
+    opacity: .65;
+}
+
+/* TAMPILAN HP */
+@media (max-width: 520px) {
+    .ticket-main {
+        padding: 23px 15px;
+    }
+
+    .ticket-main h2 {
+        font-size: 26px;
+    }
+
+    .ticket-main h3 {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .ticket-details {
+        gap: 18px;
+    }
+
+    .ticket-details strong {
+        font-size: 12px;
+    }
+
+    .ticket-stub {
+        flex-basis: 105px;
+        width: 105px !important;
+        padding: 15px 7px !important;
+    }
+
+    .stub-label,
+    .stub-redeem {
+        font-size: 7px !important;
+        letter-spacing: 1px;
+    }
+
+    .stub-heart {
+        font-size: 34px !important;
+    }
+
+    .ticket-quote {
+        font-size: 10px !important;
+    }
+
+    .ticket-date {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .ticket-date strong {
+        font-size: 7px;
+    }
+}
+
+/* =====================================
+   FIRST MEET TICKET - FINAL POLISH
+===================================== */
+
+/* Label dibuat sederhana dan elegan */
+.ticket-details span,
+.ticket-date span {
+    display: block !important;
+    width: auto !important;
+    padding: 0 !important;
+    margin: 0 0 5px !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+
+    color: #ad8277 !important;
+    font-size: 8px !important;
+    letter-spacing: 2px !important;
+}
+
+/* Kerapian bagian utama */
+.ticket-main {
+    padding: 32px 35px;
+}
+
+.ticket-main h2 {
+    font-size: 36px;
+    letter-spacing: 2.5px;
+}
+
+.ticket-details {
+    gap: 75px;
+    margin-top: 3px;
+}
+
+.ticket-details strong {
+    font-size: 14px;
+}
+
+.ticket-quote {
+    margin-top: 20px !important;
+    margin-bottom: 18px !important;
+    line-height: 1.8 !important;
+}
+
+/* Tanggal lebih rapi */
+.ticket-date {
+    gap: 15px;
+}
+
+.ticket-date span {
+    margin: 0 !important;
+}
+
+.ticket-date strong {
+    font-size: 8px;
+    letter-spacing: 1.3px;
+}
+
+/* Bagian sobekan */
+.ticket-stub {
+    flex-basis: 145px;
+    width: 145px !important;
+    padding: 25px 12px !important;
+}
+
+.stub-label {
+    margin-bottom: 8px;
+}
+
+.stub-heart {
+    margin: 7px 0 12px;
+}
+
+.stub-line {
+    margin: 18px 0;
+}
+
+/* Efek cekungan pada garis pemisah */
+.ticket-stub {
+    border-left: 2px dashed #c99d8e;
+}
+
+/* Tampilan HP */
+@media (max-width: 520px) {
+    .ticket-main {
+        padding: 25px 15px;
+    }
+
+    .ticket-details {
+        gap: 22px;
+    }
+
+    .ticket-stub {
+        flex-basis: 105px;
+        width: 105px !important;
+    }
+}
+
+/* PESAN KHUSUS DI BAWAH TIKET */
+
+.selected-gift-note {
+    display: none;
+    max-width: 680px;
+    margin: 25px auto 0;
+    padding: 35px 30px;
+    text-align: center;
+    background: linear-gradient(145deg, #fffaf7, #fff0f5);
+    border: 1px solid #efd8df;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(180, 120, 150, 0.10);
+}
+
+.selected-gift-note.show {
+    display: block;
+    animation: fadeIn 0.8s ease;
+}
+
+.note-decoration {
+    font-size: 34px;
+    color: #d58aa8;
+    margin-bottom: 12px;
+}
+
+.selected-gift-note h3 {
+    font-size: 23px;
+    color: #765b68;
+    margin-bottom: 15px;
+}
+
+.selected-gift-note p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #806575;
+}
+
+.note-signature {
+    margin-top: 22px;
+    font-style: italic;
+    color: #c87998;
+}
+
+@media (max-width: 600px) {
+    .selected-gift-note {
+        padding: 28px 20px;
+    }
+
+    .selected-gift-note h3 {
+        font-size: 20px;
+    }
+
+    .selected-gift-note p {
+        font-size: 14px;
+    }
+}
+
+#selected-note-image {
+    display: block;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin: 20px auto;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+}
