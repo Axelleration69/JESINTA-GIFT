@@ -2029,9 +2029,9 @@ footer span {
 /* MUSIC CONTROL BUTTON */
 #music-toggle {
     position: fixed;
-    bottom: 22px;
-    right: 22px;
-    z-index: 9999;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
 
     padding: 12px 20px;
     border: 1px solid #e9a5bc;
@@ -2057,9 +2057,9 @@ footer span {
 
 @media (max-width: 600px) {
     #music-toggle {
-        bottom: 15px;
-        right: 15px;
-        padding: 11px 17px;
+        top: 12px;
+        right: 12px;
+        padding: 10px 15px;
         font-size: 12px;
     }
 }
