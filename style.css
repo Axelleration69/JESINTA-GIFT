@@ -1988,7 +1988,7 @@ footer span {
 }
 
 /* =====================================
-   MUSIC CONTROL - FIXED VIEWPORT
+   MUSIC CONTROL - ALWAYS VISIBLE
 ===================================== */
 
 #music-toggle {
@@ -1998,9 +1998,11 @@ footer span {
     bottom: auto !important;
     left: auto !important;
 
-    z-index: 999999;
+    z-index: 999999 !important;
 
+    display: block;
     padding: 12px 20px;
+
     border: 1px solid #e9a5bc;
     border-radius: 30px;
 
@@ -2013,13 +2015,12 @@ footer span {
 
     cursor: pointer;
     box-shadow: 0 5px 18px rgba(180, 120, 150, 0.2);
-    transition: 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 #music-toggle:hover {
     background: #e9a5bc;
     color: white;
-    transform: translateY(-2px);
 }
 
 @media (max-width: 600px) {

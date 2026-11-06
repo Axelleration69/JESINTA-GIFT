@@ -1,4 +1,3 @@
-
 /* =====================================
    JESINTA GIFT WEBSITE
    INTERACTIVE JAVASCRIPT
@@ -49,6 +48,9 @@ function startExperience() {
         hero.style.display = "none";
         content.classList.add("is-visible");
 
+        // Tampilkan tombol musik setelah Dashboard terbuka
+        setMusicButtonVisibility(true);
+
         window.scrollTo({
             top: 0,
             behavior: "instant"
@@ -78,6 +80,9 @@ function goHome() {
     if (finalMessage) finalMessage.style.display = "none";
 
     if (content) content.classList.remove("is-visible");
+
+    // Sembunyikan tombol musik ketika kembali ke Home
+    setMusicButtonVisibility(false);
 
     if (hero) {
         hero.style.display = "flex";
@@ -220,6 +225,24 @@ let musicStarted = false;
 let isFadingOut = false;
 
 
+/* =====================================
+   PENGATURAN VISIBILITAS TOMBOL MUSIK
+===================================== */
+
+function setMusicButtonVisibility(visible) {
+
+    const button = document.getElementById("music-toggle");
+
+    if (!button) return;
+
+    button.style.display = visible ? "block" : "none";
+}
+
+
+// Pastikan tombol musik tersembunyi saat pertama kali membuka website
+setMusicButtonVisibility(false);
+
+
 function fadeMusic(targetVolume, duration) {
 
     if (!music) return;
@@ -331,11 +354,6 @@ async function toggleBackgroundMusic() {
     }
 
 }
-
-
-// Jika autoplay ditolak browser,
-// coba putar musik saat Jesinta berinteraksi dengan halaman.
-// Tidak membuat tombol tambahan.
 
 
 /* =====================================
