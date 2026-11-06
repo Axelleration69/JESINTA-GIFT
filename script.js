@@ -261,7 +261,8 @@ async function startBackgroundMusic() {
 
         musicStarted = true;
         isFadingOut = false;
-updateMusicButton();
+
+        updateMusicButton();
 
         fadeMusic(0.65, 1200);
 
@@ -273,11 +274,13 @@ updateMusicButton();
 
 }
 
+
 /* =====================================
    MUSIC PLAY / PAUSE CONTROL
 ===================================== */
 
 function updateMusicButton() {
+
     const button = document.getElementById("music-toggle");
 
     if (!button || !music) return;
@@ -329,12 +332,15 @@ async function toggleBackgroundMusic() {
 
 }
 
-// Jika autoplay ditolak Chrome,
+
+// Jika autoplay ditolak browser,
 // coba putar musik saat Jesinta berinteraksi dengan halaman.
 // Tidak membuat tombol tambahan.
 
 
-
+/* =====================================
+   FADE OUT DAN LOOP MUSIK
+===================================== */
 
 // Fade out menjelang musik selesai
 if (music) {
@@ -477,7 +483,6 @@ function burstHearts() {
    10. CONFETTI BURST
 ===================================== */
 
-
 function launchConfetti() {
 
     const canvas = document.createElement("canvas");
@@ -598,7 +603,6 @@ function launchConfetti() {
 }
 
 
-
 /* =====================================
    11. GIFT SELECTION & WHATSAPP
 ===================================== */
@@ -606,6 +610,7 @@ function launchConfetti() {
 const whatsappNumber = "6285311408327";
 
 const promiseGifts = [
+
     {
         name: "A Bouquet of Love",
         whatsapp: "Aku memilih hadiah A Bouquet of Love ♡",
@@ -613,6 +618,7 @@ const promiseGifts = [
         image: "hadiah1.jpg",
         note: "If I could give you a flower for every time you make me smile, I would give you an endless garden. Until then, let this bouquet remind you how special you are to me."
     },
+
     {
         name: "A Little Hug",
         whatsapp: "Aku memilih hadiah A Little Hug ♡",
@@ -620,6 +626,7 @@ const promiseGifts = [
         image: "hadiah2.jpg",
         note: "Whenever you need a hug and I'm not around, I hope this little friend can remind you that someone is always thinking of you."
     },
+
     {
         name: "A Promise to Keep",
         whatsapp: "Aku memilih hadiah A Promise to Keep ♡",
@@ -627,11 +634,15 @@ const promiseGifts = [
         image: "hadiah3.jpg",
         note: "Not a promise of perfection, but a promise to keep choosing you, to grow with you, and to make more beautiful memories together."
     }
+
 ];
+
 
 // MENAMPILKAN PESAN DI BAWAH TIKET
 function showSelectedGift(index) {
+
     const gift = promiseGifts[index];
+
     if (!gift) return;
 
     const note = document.getElementById("selected-gift-note");
@@ -654,6 +665,7 @@ function showSelectedGift(index) {
     note.classList.add("show");
 }
 
+
 // MEMILIH HADIAH
 function selectPromise(index) {
 
@@ -671,8 +683,10 @@ function selectPromise(index) {
     const message = document.getElementById("selected-gift-message");
 
     if (message) {
+
         message.textContent =
             `Kamu memilih "${gift.name}". Hadiah ini akan menjadi janji kecil yang menunggu hari kita bertemu. ♡`;
+
     }
 
     if (result) {
@@ -695,10 +709,12 @@ function selectPromise(index) {
     window.open(whatsappURL, "_blank");
 
     if (result) {
+
         result.scrollIntoView({
             behavior: "smooth",
             block: "center"
         });
+
     }
 
 }
@@ -722,11 +738,11 @@ function lockGiftChoices(selectedIndex) {
 
     buttons.forEach((button, index) => {
 
-    if (!button.dataset.originalText) {
-        button.dataset.originalText = button.textContent;
-    }
+        if (!button.dataset.originalText) {
+            button.dataset.originalText = button.textContent;
+        }
 
-    button.disabled = true;
+        button.disabled = true;
 
         if (index === selectedIndex) {
             button.textContent = "Your Choice ♡";
@@ -755,8 +771,10 @@ function restoreGiftChoice() {
     const message = document.getElementById("selected-gift-message");
 
     if (message) {
+
         message.textContent =
             `Kamu memilih "${gift.name}". Hadiah ini akan menjadi janji kecil yang menunggu hari kita bertemu. ♡`;
+
     }
 
     if (result) {
@@ -773,8 +791,10 @@ function restoreGiftChoice() {
 
 
 document.addEventListener("DOMContentLoaded", restoreGiftChoice);
+
+
 /* =====================================
-   RESET GIFT CHOICE
+   12. RESET GIFT CHOICE
 ===================================== */
 
 function resetGiftChoice() {
@@ -809,7 +829,10 @@ function resetGiftChoice() {
         behavior: "smooth",
         block: "start"
     });
+
 }
+
+
 /* =====================================
    13. BIRTHDAY COUNTDOWN
 ===================================== */
@@ -819,7 +842,6 @@ function updateBirthdayCountdown() {
     const countdown = document.getElementById("birthday-countdown");
 
     if (!countdown) return;
-
 
     const now = new Date().getTime();
 
@@ -899,11 +921,9 @@ function showBirthdayMessage() {
     // Cegah popup bertumpuk
     if (document.getElementById("birthday-popup")) return;
 
-
     const overlay = document.createElement("div");
 
     overlay.id = "birthday-popup";
-
 
     overlay.innerHTML = `
 
@@ -988,4 +1008,3 @@ function showBirthdayMessage() {
 ===================================== */
 
 console.log("Jesinta Gift Website berhasil dimuat ♡");
-

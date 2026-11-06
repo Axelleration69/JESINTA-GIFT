@@ -593,40 +593,6 @@ a:focus-visible {
 }
 
 /* =====================================
-   MUSIC PLAYER
-===================================== */
-
-.music-player {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 30;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 15px;
-    border: 1px solid #f0d3df;
-    border-radius: 50px;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 5px 20px rgba(183, 112, 142, 0.15);
-}
-
-.music-player button {
-    width: 30px;
-    height: 30px;
-    border: none;
-    border-radius: 50%;
-    color: white;
-    background: var(--pink-dark);
-    font-size: 15px;
-}
-
-.music-player span {
-    font-size: 10px;
-    color: var(--text);
-}
-
-/* =====================================
    GIFT MODAL
 ===================================== */
 
@@ -1413,11 +1379,6 @@ footer span {
     .surprise-card {
         padding: 40px 20px;
     }
-
-    .music-player {
-        right: 10px;
-        bottom: 10px;
-    }
 }
 
 /* =====================================
@@ -2026,18 +1987,24 @@ footer span {
     color: white;
 }
 
-/* MUSIC CONTROL BUTTON */
+/* =====================================
+   MUSIC CONTROL - FIXED VIEWPORT
+===================================== */
+
 #music-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 99999;
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    bottom: auto !important;
+    left: auto !important;
+
+    z-index: 999999;
 
     padding: 12px 20px;
     border: 1px solid #e9a5bc;
     border-radius: 30px;
 
-    background: rgba(255, 250, 247, 0.95);
+    background: rgba(255, 250, 247, 0.97);
     color: #c87998;
 
     font-family: inherit;
@@ -2052,13 +2019,13 @@ footer span {
 #music-toggle:hover {
     background: #e9a5bc;
     color: white;
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 @media (max-width: 600px) {
     #music-toggle {
-        top: 12px;
-        right: 12px;
+        top: 12px !important;
+        right: 12px !important;
         padding: 10px 15px;
         font-size: 12px;
     }

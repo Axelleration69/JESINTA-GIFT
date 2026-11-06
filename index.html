@@ -22,7 +22,6 @@
     <!-- ANIMASI BACKGROUND -->
     <div id="floating-container"></div>
 
-
     <!-- HERO / HALAMAN PEMBUKA -->
     <header class="hero" id="home">
 
@@ -81,10 +80,8 @@
 
     </header>
 
-
     <!-- ISI WEBSITE -->
     <div id="site-content" class="site-content">
-
 
         <!-- NAVIGASI -->
         <nav class="navbar">
@@ -97,9 +94,7 @@
 
         </nav>
 
-
         <main>
-
 
             <!-- SURAT CINTA -->
             <section class="section" id="letter">
@@ -118,7 +113,6 @@
 
                 </div>
 
-
                 <div class="letter-card">
 
                     <div class="envelope" id="envelope">
@@ -136,7 +130,6 @@
                         </button>
 
                     </div>
-
 
                     <article class="letter-content" id="letter-content">
 
@@ -219,7 +212,6 @@
 
             </section>
 
-
             <!-- VIRTUAL GIFT CARDS -->
             <section class="section gifts-section" id="gifts">
 
@@ -235,7 +227,6 @@
                     </p>
 
                 </div>
-
 
                 <div class="gift-grid">
 
@@ -255,7 +246,6 @@
 
                     </div>
 
-
                     <div class="gift-card">
 
                         <div class="gift-icon">🧸</div>
@@ -271,7 +261,6 @@
                         </button>
 
                     </div>
-
 
                     <div class="gift-card">
 
@@ -293,7 +282,6 @@
 
             </section>
 
-
             <!-- GALERI KENANGAN -->
             <section class="section" id="memories">
 
@@ -309,7 +297,6 @@
 
                 </div>
 
-
                 <!-- VIDEO UTAMA -->
                 <div class="featured-video">
 
@@ -318,7 +305,6 @@
                     </video>
 
                 </div>
-
 
                 <!-- LIMA FOTO -->
                 <div class="memory-grid">
@@ -336,7 +322,6 @@
                         <img src="foto3.jpeg" alt="Another Mirror Moment">
                     </div>
 
-
                     <!-- BARIS 2: DUA FOTO HORIZONTAL -->
                     <div class="memory-item horizontal">
                         <img src="foto2.jpeg" alt="Sweet Ice Cream Moment">
@@ -349,7 +334,6 @@
                 </div>
 
             </section>
-
 
             <!-- CHOOSE YOUR GIFT -->
             <section class="section choose-gift-section" id="choose-gift">
@@ -370,10 +354,8 @@
 
                 </div>
 
-
                 <!-- PILIHAN HADIAH -->
                 <div class="promise-grid">
-
 
                     <!-- HADIAH 1 -->
                     <div class="promise-card">
@@ -398,7 +380,6 @@
 
                     </div>
 
-
                     <!-- HADIAH 2 -->
                     <div class="promise-card">
 
@@ -421,7 +402,6 @@
                         </div>
 
                     </div>
-
 
                     <!-- HADIAH 3 -->
                     <div class="promise-card">
@@ -448,58 +428,6 @@
 
                 </div>
 
-
-                <!-- KEJUTAN TERAKHIR -->
-                <section class="section surprise-section" id="surprise">
-
-                    <div class="surprise-card">
-
-                        <span class="eyebrow">ONE LAST THING</span>
-
-                        <div class="surprise-icon">🎁</div>
-
-                        <h2>Something Special Awaits</h2>
-
-                        <p>
-                            Before you leave, there's one more
-                            little surprise waiting for you.
-                        </p>
-
-                        <button class="primary-btn" onclick="revealSurprise()">
-                            Reveal My Surprise ♡
-                        </button>
-
-
-                        <div id="final-message" class="final-message">
-
-                            <div class="final-hearts">💗 🌷 ✨</div>
-
-                            <h3>Happy Birthday, My Love!</h3>
-
-                            <p>
-                                Dari sekian banyak hal indah di dunia,
-                                aku bersyukur bisa mengenalmu dan
-                                menjadi bagian dari ceritamu.
-                            </p>
-
-                            <p>
-                                Semoga hari ini menjadi salah satu
-                                hari yang selalu ingin kamu kenang.
-                            </p>
-
-                            <h3>I Love You, Jesinta. ♡</h3>
-
-                            <div class="final-signature">
-                                Forever yours.
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
                 <!-- HASIL PILIHAN -->
                 <div id="gift-selection-result" class="gift-selection-result">
 
@@ -508,7 +436,6 @@
                     <h3>Your Choice Has Been Made!</h3>
 
                     <p id="selected-gift-message"></p>
-
 
                     <!-- FIRST MEET TICKET -->
                     <div class="first-meet-ticket">
@@ -549,7 +476,6 @@
 
                         </div>
 
-
                         <div class="ticket-stub">
 
                             <span class="stub-label">KEEP THIS TICKET</span>
@@ -569,37 +495,79 @@
 
                     </div>
 
-
                     <!-- PESAN KHUSUS SESUAI HADIAH -->
                     <div class="selected-gift-note" id="selected-gift-note">
+
+                        <div class="note-decoration">♡</div>
+
+                        <img id="selected-note-image" src="" alt="Your Selected Gift">
+
+                        <h3 id="selected-note-title"></h3>
+
+                        <p id="selected-note-message"></p>
+
+                        <div class="note-signature">With love, Rahmat ♡</div>
+
                         <button class="reset-choice-button" onclick="resetGiftChoice()">
-    Reset Choice ↻
-</button>
-    <div class="note-decoration">♡</div>
+                            Reset Choice ↻
+                        </button>
 
-    <img id="selected-note-image" src="" alt="Your Selected Gift">
+                    </div>
 
-    <h3 id="selected-note-title"></h3>
-    <p id="selected-note-message"></p>
+                </div>
 
-    <div class="note-signature">With love, Rahmat ♡</div>
-</div>
+            </section>
 
-                
+            <!-- KEJUTAN TERAKHIR -->
+            <section class="section surprise-section" id="surprise">
+
+                <div class="surprise-card">
+
+                    <span class="eyebrow">ONE LAST THING</span>
+
+                    <div class="surprise-icon">🎁</div>
+
+                    <h2>Something Special Awaits</h2>
+
+                    <p>
+                        Before you leave, there's one more
+                        little surprise waiting for you.
+                    </p>
+
+                    <button class="primary-btn" onclick="revealSurprise()">
+                        Reveal My Surprise ♡
+                    </button>
+
+                    <div id="final-message" class="final-message">
+
+                        <div class="final-hearts">💗 🌷 ✨</div>
+
+                        <h3>Happy Birthday, My Love!</h3>
+
+                        <p>
+                            Dari sekian banyak hal indah di dunia,
+                            aku bersyukur bisa mengenalmu dan
+                            menjadi bagian dari ceritamu.
+                        </p>
+
+                        <p>
+                            Semoga hari ini menjadi salah satu
+                            hari yang selalu ingin kamu kenang.
+                        </p>
+
+                        <h3>I Love You, Jesinta. ♡</h3>
+
+                        <div class="final-signature">
+                            Forever yours.
+                        </div>
+
+                    </div>
+
                 </div>
 
             </section>
 
         </main>
-
-
-        <!-- MUSIC PLAYER -->
-        <audio id="background-music" preload="auto">
-            <source src="lagu.mp3" type="audio/mpeg">
-        </audio>
-<button id="music-toggle" onclick="toggleBackgroundMusic()">
-    ♫ Play Music
-</button>
 
         <!-- FOOTER -->
         <footer>
@@ -612,6 +580,14 @@
 
     </div>
 
+    <!-- MUSIC PLAYER -->
+    <audio id="background-music" preload="auto">
+        <source src="lagu.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-toggle" onclick="toggleBackgroundMusic()">
+        ♫ Play Music
+    </button>
 
     <!-- POPUP GIFT -->
     <div class="modal" id="gift-modal">
@@ -633,7 +609,6 @@
         </div>
 
     </div>
-
 
     <!-- JAVASCRIPT -->
     <script src="script.js"></script>
