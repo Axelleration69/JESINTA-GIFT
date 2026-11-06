@@ -1952,28 +1952,6 @@ footer span {
     box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
 }
 
-/* RESET CHOICE BUTTON */
-
-.reset-choice-button {
-    display: block;
-    margin: 25px auto 10px;
-    padding: 12px 28px;
-    border: 1px solid #c87998;
-    border-radius: 30px;
-    background: transparent;
-    color: #c87998;
-    font-family: inherit;
-    font-size: 13px;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.reset-choice-button:hover {
-    background: #c87998;
-    color: white;
-}
-
-
 /* =====================================
    MUSIC PLAYER BUTTON
 ===================================== */

@@ -1,4 +1,3 @@
-
 /* =====================================
    JESINTA GIFT WEBSITE
    INTERACTIVE JAVASCRIPT
@@ -9,7 +8,7 @@
    1. PENGATURAN TANGGAL ULANG TAHUN
 ===================================== */
 
-const birthdayDate = new Date(Date.now() + 3000);
+const birthdayDate = new Date("2027-01-16T00:00:00");
 
 let experienceStarted = false;
 
@@ -853,47 +852,7 @@ document.addEventListener("DOMContentLoaded", restoreGiftChoice);
 
 
 /* =====================================
-   12. RESET GIFT CHOICE
-===================================== */
-
-function resetGiftChoice() {
-
-    localStorage.removeItem("jesintaGiftChoice");
-
-    const result = document.getElementById("gift-selection-result");
-    const message = document.getElementById("selected-gift-message");
-    const note = document.getElementById("selected-gift-note");
-
-    if (result) result.classList.remove("show");
-    if (message) message.textContent = "";
-
-    if (note) {
-        note.style.display = "none";
-        note.classList.remove("show");
-    }
-
-    const cards = document.querySelectorAll(".promise-card");
-    const buttons = document.querySelectorAll(".promise-button");
-
-    cards.forEach(card => {
-        card.classList.remove("selected", "locked");
-    });
-
-    buttons.forEach(button => {
-        button.disabled = false;
-        button.textContent = button.dataset.originalText || "Choose This Gift";
-    });
-
-    document.getElementById("choose-gift")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-
-}
-
-
-/* =====================================
-   13. BIRTHDAY COUNTDOWN
+   12. BIRTHDAY COUNTDOWN
 ===================================== */
 
 function updateBirthdayCountdown() {
@@ -964,7 +923,7 @@ setInterval(updateBirthdayCountdown, 1000);
 
 
 /* =====================================
-   14. POPUP SEBELUM ULANG TAHUN
+   13. POPUP SEBELUM ULANG TAHUN
 ===================================== */
 
 function showBirthdayMessage() {
@@ -1039,7 +998,7 @@ function showBirthdayMessage() {
 
 
 /* =====================================
-   15. WEBSITE READY
+   14. WEBSITE READY
 ===================================== */
 
 console.log("Jesinta Gift Website berhasil dimuat ♡");
