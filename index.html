@@ -613,7 +613,11 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script src="script.js"></script>
-
+<script>
+    const js = document.createElement("script");
+    js.src = "script.js?v=" + Date.now();
+    document.body.appendChild(js);
+    
+</script>
 </body>
 </html>
