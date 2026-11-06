@@ -1,4 +1,3 @@
-
 /* =====================================
    JESINTA GIFT WEBSITE
    ROMANTIC PASTEL DESIGN
@@ -1465,7 +1464,6 @@ footer span {
         inset 0 0 0 6px rgba(255,255,255,.45);
 }
 
-/* Garis dekorasi bagian dalam */
 .first-meet-ticket::before {
     content: "";
     position: absolute;
@@ -1475,7 +1473,6 @@ footer span {
     pointer-events: none;
 }
 
-/* Ornamen lingkaran */
 .first-meet-ticket::after {
     content: "♡";
     position: absolute;
@@ -1525,7 +1522,6 @@ footer span {
     font-style: italic;
 }
 
-/* Nomor dan keterangan tiket */
 .first-meet-ticket p::after {
     content: "✦  ADMIT ONE  ✦";
     display: block;
@@ -1575,7 +1571,6 @@ footer span {
     text-align: left;
 }
 
-/* MATIKAN ORNAMEN DESAIN LAMA */
 .first-meet-ticket::before,
 .first-meet-ticket::after {
     display: none !important;
@@ -1587,7 +1582,6 @@ footer span {
     content: none !important;
 }
 
-/* BAGIAN UTAMA */
 .ticket-main {
     flex: 1;
     min-width: 0;
@@ -1677,7 +1671,6 @@ footer span {
     letter-spacing: 1.5px;
 }
 
-/* BAGIAN SOBEKAN */
 .ticket-stub {
     position: relative;
     display: flex;
@@ -1726,7 +1719,6 @@ footer span {
     line-height: 1.8;
 }
 
-/* DETAIL BARCODE DEKORATIF */
 .ticket-stub::after {
     content: "";
     display: block;
@@ -1747,7 +1739,6 @@ footer span {
     opacity: .65;
 }
 
-/* TAMPILAN HP */
 @media (max-width: 520px) {
     .ticket-main {
         padding: 23px 15px;
@@ -1805,7 +1796,6 @@ footer span {
    FIRST MEET TICKET - FINAL POLISH
 ===================================== */
 
-/* Label dibuat sederhana dan elegan */
 .ticket-details span,
 .ticket-date span {
     display: block !important;
@@ -1821,7 +1811,6 @@ footer span {
     letter-spacing: 2px !important;
 }
 
-/* Kerapian bagian utama */
 .ticket-main {
     padding: 32px 35px;
 }
@@ -1846,7 +1835,6 @@ footer span {
     line-height: 1.8 !important;
 }
 
-/* Tanggal lebih rapi */
 .ticket-date {
     gap: 15px;
 }
@@ -1860,7 +1848,6 @@ footer span {
     letter-spacing: 1.3px;
 }
 
-/* Bagian sobekan */
 .ticket-stub {
     flex-basis: 145px;
     width: 145px !important;
@@ -1879,12 +1866,10 @@ footer span {
     margin: 18px 0;
 }
 
-/* Efek cekungan pada garis pemisah */
 .ticket-stub {
     border-left: 2px dashed #c99d8e;
 }
 
-/* Tampilan HP */
 @media (max-width: 520px) {
     .ticket-main {
         padding: 25px 15px;
@@ -1968,6 +1953,7 @@ footer span {
 }
 
 /* RESET CHOICE BUTTON */
+
 .reset-choice-button {
     display: block;
     margin: 25px auto 10px;
@@ -1988,34 +1974,21 @@ footer span {
 }
 
 /* =====================================
-   MUSIC CONTROL - ALWAYS VISIBLE
+   MUSIC BUTTON - FIXED POSITION
 ===================================== */
 
 #music-toggle {
+    display: none !important;
     position: fixed !important;
-    top: 20px !important;
+    top: auto !important;
     right: 20px !important;
-    bottom: auto !important;
+    bottom: 20px !important;
     left: auto !important;
-
     z-index: 999999 !important;
+}
 
-    display: block;
-    padding: 12px 20px;
-
-    border: 1px solid #e9a5bc;
-    border-radius: 30px;
-
-    background: rgba(255, 250, 247, 0.97);
-    color: #c87998;
-
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 600;
-
-    cursor: pointer;
-    box-shadow: 0 5px 18px rgba(180, 120, 150, 0.2);
-    transition: background 0.3s ease, color 0.3s ease;
+#music-toggle.show-music {
+    display: block !important;
 }
 
 #music-toggle:hover {
@@ -2023,11 +1996,40 @@ footer span {
     color: white;
 }
 
+/* =====================================
+   MUSIC BUTTON - MOBILE POSITION
+   TEPAT DI BAWAH NAVIGASI
+===================================== */
+
 @media (max-width: 600px) {
     #music-toggle {
-        top: 12px !important;
+        top: auto !important;
         right: 12px !important;
-        padding: 10px 15px;
-        font-size: 12px;
+        bottom: 20px !important;
+        left: auto !important;
+    }
+}
+
+/* POSISI TOMBOL MUSIK - KANAN BAWAH LAYAR */
+#music-toggle,
+#music-toggle.show-music {
+    position: fixed !important;
+    top: auto !important;
+    right: 20px !important;
+    bottom: 20px !important;
+    left: auto !important;
+    transform: none !important;
+    z-index: 999999 !important;
+}
+
+@media (max-width: 600px) {
+    #music-toggle,
+    #music-toggle.show-music {
+        position: fixed !important;
+        top: auto !important;
+        right: 15px !important;
+        bottom: 20px !important;
+        left: auto !important;
+        transform: none !important;
     }
 }

@@ -29,12 +29,12 @@ function startExperience() {
     // Cegah website dibuka berulang kali
     if (experienceStarted) return;
 
-    experienceStarted = true;
-
     const hero = document.querySelector(".hero");
     const content = document.getElementById("site-content");
 
     if (!hero || !content) return;
+
+    experienceStarted = true;
 
     // Efek pembukaan
     burstHearts();
@@ -48,7 +48,7 @@ function startExperience() {
         hero.style.display = "none";
         content.classList.add("is-visible");
 
-        // Tampilkan tombol musik setelah Dashboard terbuka
+        // Tampilkan tombol musik
         setMusicButtonVisibility(true);
 
         window.scrollTo({
@@ -57,6 +57,7 @@ function startExperience() {
         });
 
     }, 850);
+
 }
 
 
@@ -235,7 +236,8 @@ function setMusicButtonVisibility(visible) {
 
     if (!button) return;
 
-    button.style.display = visible ? "block" : "none";
+    // Visibilitas dikendalikan melalui class CSS
+    button.classList.toggle("show-music", visible);
 }
 
 
